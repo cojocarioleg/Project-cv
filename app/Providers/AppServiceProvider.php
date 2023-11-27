@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Network;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,5 +24,10 @@ class AppServiceProvider extends ServiceProvider
     {
         //paginate
         Paginator::useBootstrap();
+
+        $networks = Network::all();
+        View::share([
+            'networks' => $networks,
+        ]);
     }
 }

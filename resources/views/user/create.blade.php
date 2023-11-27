@@ -1,90 +1,80 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 3 | Registration Page</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('web.layouts.main')
+@extends('web.layouts.head')
+@extends('web.layouts.header')
+@extends('web.layouts.nav')
+@extends('web.layouts.cart')
+@extends('web.layouts.footer')
 
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('assets/admin/css/admin.css') }}">
-</head>
-<body class="hold-transition register-page">
-<div class="register-box">
-    <div class="register-logo">
-        <b>Register</b>
-    </div>
+@section('title', 'Register')
 
-    <div class="card">
-        <div class="card-body register-card-body">
+@section('content')
 
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul class="list-unstyled">
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+    <main class="main">
 
-            <form action="{{ route('register.store') }}" method="post">
-                @csrf
+        @include('web.layouts.container-fluid', [($page = 'Register')])
 
-                <div class="input-group mb-3">
-                    <input type="text" name="name" class="form-control" placeholder="Name" value="{{ old('name') }}">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+        <div class="container-fluid mb-3">
+            <div class="row">
+                <div class="col-12">
+
+                    <div class="page-register bg-white p-3">
+                        <h1 class="section-title h3"><span>Registration</span></h1>
+
+                        <div class="row">
+                            <div class="col-md-6 offset-md-3">
+                                <form action="{{ route('register.store') }}" method="post" class="needs-validation"
+                                    novalidate>
+                                    @csrf
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label required">Name</label>
+                                        <input type="text" name="name" class="form-control" id="name"
+                                            placeholder="Name Surname" required>
+                                        <div class="invalid-feedback">
+                                            Name is required
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label required">Email</label>
+                                        <input type="email" name="email" class="form-control" id="email"
+                                            placeholder="example@exmp.com" required>
+                                        <div class="invalid-feedback">
+                                            Please, provide a valid email
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label required">Password</label>
+                                        <input type="password" name="password" class="form-control" id="password"
+                                            placeholder="Password" required>
+                                        <div class="invalid-feedback">
+                                            Password is required
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="password_confirmation" class="form-label required">Password</label>
+                                        <input type="password" name="password_confirmation" class="form-control"
+                                            id="password_confirmation" placeholder="Retype password" required>
+                                        <div class="invalid-feedback">
+                                            Retype password
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <button type="submit" class="btn btn-warning">Registration</button>
+                                    </div>
+
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="input-group mb-3">
-                    <input type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-envelope"></span>
-                        </div>
                     </div>
-                </div>
 
-                <div class="input-group mb-3">
-                    <input type="password" name="password" class="form-control" placeholder="Password">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
-                        </div>
-                    </div>
                 </div>
-
-                <div class="input-group mb-3">
-                    <input type="password" name="password_confirmation" class="form-control" placeholder="Retype password">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <!-- /.col -->
-                    <div class="col-4 offset-8">
-                        <button type="submit" class="btn btn-primary btn-block">Register</button>
-                    </div>
-                    <!-- /.col -->
-                </div>
-            </form>
-
-            <a href="#" class="text-center">I already have a membership</a>
+            </div>
         </div>
-        <!-- /.form-box -->
-    </div><!-- /.card -->
-</div>
-<!-- /.register-box -->
 
-<script src="{{ asset('assets/admin/js/admin.js') }}"></script>
-</body>
-</html>
+    </main>
 
+@endsection

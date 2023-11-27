@@ -7,12 +7,14 @@ use App\Http\Controllers\Admin\AdminProductsController;
 use App\Http\Controllers\Admin\AdminSizesController;
 use App\Http\Controllers\Admin\AdminTypesController;
 use App\Http\Controllers\Admin\MainController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NetworkController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Web Admin Routes
 |--------------------------------------------------------------------------
 */
 Route::prefix('admin')->middleware('admin')->group(function () {
@@ -23,6 +25,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::resource('/sizes', AdminSizesController::class);
     Route::resource('/types', AdminTypesController::class);
     Route::resource('/products', AdminProductsController::class);
+    Route::resource('/networks', NetworkController::class);
 });
 
 Route::middleware('guest')->group(function(){
@@ -33,4 +36,12 @@ Route::middleware('guest')->group(function(){
 });
 
 Route::get('/logout', [UserController::class, 'logout'])->name('logout')->middleware('auth');
+
+/*
+|--------------------------------------------------------------------------
+| Web Site Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
