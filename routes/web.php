@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminProductsController;
 use App\Http\Controllers\Admin\AdminSizesController;
 use App\Http\Controllers\Admin\AdminTypesController;
 use App\Http\Controllers\Admin\MainController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,3 +29,7 @@ Route::resource('/sizes', AdminSizesController::class);
 Route::resource('/types', AdminTypesController::class);
 Route::resource('/products', AdminProductsController::class);
 
+
+Route::get('/register', [UserController::class, 'create'] )->name('register.create');
+
+Route::post('/register', [UserController::class, 'store'] )->name('register.store');
