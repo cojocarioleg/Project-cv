@@ -22,6 +22,9 @@ class DatabaseSeeder extends Seeder
             OfferSeeder::class,
             ColorSeeder::class,
             ProductSeeder::class,
+            NetworkSeeder::class,
+            AdvantageSeeder::class,
+
 
         ]);
     }

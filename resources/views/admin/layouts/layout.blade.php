@@ -323,7 +323,7 @@
 
                         <li class="nav-item has-treeview">
                             <a href="{{ route('networks.index') }}" class="nav-link">
-                               
+
                                 <i class="nav-icon fas fa-wifi"></i>
                                 <p>
                                     Socials Networks
@@ -341,6 +341,30 @@
                                     <a href="{{ route('networks.create') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>New Socials Networks</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item has-treeview">
+                            <a href="{{ route('advantages.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-plus-square"></i>
+                                <p>
+                                    Advantages
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('advantages.index') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List of Advantages</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('advantages.create') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>New Advantages</p>
                                     </a>
                                 </li>
                             </ul>

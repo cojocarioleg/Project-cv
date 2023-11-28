@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminProductsController;
 use App\Http\Controllers\Admin\AdminSizesController;
 use App\Http\Controllers\Admin\AdminTypesController;
 use App\Http\Controllers\Admin\MainController;
+use App\Http\Controllers\AdvantagesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NetworkController;
 use App\Http\Controllers\UserController;
@@ -26,6 +27,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::resource('/types', AdminTypesController::class);
     Route::resource('/products', AdminProductsController::class);
     Route::resource('/networks', NetworkController::class);
+    Route::resource('/advantages', AdvantagesController::class);
 });
 
 Route::middleware('guest')->group(function(){

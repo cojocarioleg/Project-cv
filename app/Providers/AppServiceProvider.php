@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
 use App\Models\Network;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
@@ -29,5 +30,9 @@ class AppServiceProvider extends ServiceProvider
         View::share([
             'networks' => $networks,
         ]);
+
+        View::composer('web/layouts/nav', function ($view) {
+            $view->with('categories', Category::orderBy('id')->get());
+        });
     }
 }
