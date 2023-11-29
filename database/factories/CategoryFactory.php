@@ -21,7 +21,7 @@ class CategoryFactory extends Factory
     {
 
             return [
-                'title' => 'Category_'.$this->faker->unique()->numberBetween(1, 5),
+                'title' => $this->faker->randomElement(['Category_1', 'Category_2', 'Category_3']),
                 'description' => $this->faker->text,
                 'image' => $this->faker->imageUrl(),
             ];

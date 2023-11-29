@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Type>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\About>
  */
-class TypeFactory extends Factory
+class AboutFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,10 +16,8 @@ class TypeFactory extends Factory
      */
     public function definition(): array
     {
-
         return [
-            'title' => $this->faker->unique()->randomElement(['New', 'Hit']),
-            'slug' => '',
+            'text' => $this->faker->text,
         ];
     }
 }

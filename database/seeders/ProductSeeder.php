@@ -27,7 +27,7 @@ class ProductSeeder extends Seeder
             $colorsIds = $colors->random(2)->pluck('id');
             $sizesIds = $sizes->random(2)->pluck('id');
             $offersIds = $offers->random(2)->pluck('id');
-            $typesIds = $types->random(2)->pluck('id');
+            $typesIds = $types->random(1)->pluck('id');
 
             $product->colors()->attach($colorsIds);
             $product->sizes()->attach($sizesIds);

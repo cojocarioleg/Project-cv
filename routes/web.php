@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutsController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminColorsController;
 use App\Http\Controllers\Admin\AdminOffersController;
@@ -28,6 +29,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::resource('/products', AdminProductsController::class);
     Route::resource('/networks', NetworkController::class);
     Route::resource('/advantages', AdvantagesController::class);
+    Route::resource('/abouts', AboutsController::class);
 });
 
 Route::middleware('guest')->group(function(){

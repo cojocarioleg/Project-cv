@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class,
             NetworkSeeder::class,
             AdvantageSeeder::class,
-
+            AboutSeeder::class,
 
         ]);
     }
