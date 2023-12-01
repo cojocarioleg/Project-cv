@@ -14,7 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-
         $this->call([
             CategorySeeder::class,
             TypeSeeder::class,
@@ -25,7 +24,7 @@ class DatabaseSeeder extends Seeder
             NetworkSeeder::class,
             AdvantageSeeder::class,
             AboutSeeder::class,
-
+            ContactSeeder::class,
         ]);
     }
 }

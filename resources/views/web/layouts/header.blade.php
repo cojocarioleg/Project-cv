@@ -6,7 +6,7 @@
                     <div class="col-6 col-sm-4">
                         <div class="header-top-phone d-flex align-items-center h-100">
                             <i class="fa-solid fa-mobile-screen"></i>
-                            <a href="tel:+1234567890" class="ms-2">123-456-7890</a>
+                            <a href="tel:{{$contact->phone}}" class="ms-2">{{$contact->phone}}</a>
                         </div>
                     </div>
 

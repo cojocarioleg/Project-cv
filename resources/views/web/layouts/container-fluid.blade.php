@@ -4,7 +4,8 @@
             <nav class="breadcrumbs">
                 <ul>
                     <li><a href="{{route('home')}}">Home</a></li>
-                    <li><span>{{$page}}</span></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><span>{{$name}}</span></li>
                 </ul>
             </nav>
         </div>
