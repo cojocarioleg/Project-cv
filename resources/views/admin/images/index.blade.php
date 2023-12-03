@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Advantages</h1>
+                    <h1>Теги</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -25,49 +25,42 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">List of advantages</h3>
+                            <h3 class="card-title">List of images</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <a href="{{ route('advantages.create') }}" class="btn btn-primary mb-3">Add a advantage</a>
-                            @if (count($advantages))
+                            <a href="{{ route('images.create') }}" class="btn btn-primary mb-3">Add a image</a>
+                            @if (count($images))
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-hover text-nowrap">
                                         <thead>
                                         <tr>
                                             <th style="width: 30px">#</th>
                                             <th>Title</th>
-                                            <th>Advantage_1</th>
-                                            <th>Advantage_2</th>
-                                            <th>Advantage_3</th>
-                                            <th>Advantage_5</th>
-                                            <th>Icon</th>
+                                            <th>Product</th>
                                             <th>Actions</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($advantages as $advantage)
+                                        @foreach($images as $image)
                                             <tr>
-                                                <td>{{ $advantage->id }}</td>
-
-                                                <td>{{ $advantage->title }}</td>
-                                                <td>{{ $advantage->advantage_1 }}</td>
-                                                <td>{{ $advantage->advantage_2 }}</td>
-                                                <td>{{ $advantage->advantage_3 }}</td>
-                                                <td>{{ $advantage->advantage_4 }}</td>
-                                                <td>{{ $advantage->icon }}</td>
+                                                <td>{{ $image->id }}</td>
+                                                <td width="150px" >
+                                                    <img src="{{$image->getImage()}}" width="100px" height="100px" alt="">
+                                                </td>
+                                                <td>{{$image->product->title}}</td>
                                                 <td>
-                                                    <a href="{{ route('advantages.edit', ['advantage' => $advantage->id]) }}"
+                                                    <a href="{{ route('images.edit', ['image' => $image->id]) }}"
                                                        class="btn btn-info btn-sm float-left mr-1">
                                                         <i class="fas fa-pencil-alt"></i>
                                                     </a>
 
                                                     <form
-                                                        action="{{ route('advantages.destroy', ['advantage' => $advantage->id]) }}"
+                                                        action="{{ route('images.destroy', ['image' => $image->id]) }}"
                                                         method="post" class="float-left">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button advantage="submit" class="btn btn-danger btn-sm" onclick="return confirm('Confirm deletion')">
+                                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Confirm deletion')">
                                                             <i class="fas fa-trash-alt"></i>
                                                         </button>
                                                     </form>
@@ -78,12 +71,12 @@
                                     </table>
                                 </div>
                             @else
-                                <p>No advantagess yet...</p>
+                                <p>No imagess yet...</p>
                             @endif
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
-                            {{ $advantages->links() }}
+                            {{ $images->links() }}
                         </div>
                     </div>
                     <!-- /.card -->

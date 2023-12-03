@@ -19,14 +19,14 @@
 
                                 </div>
                                 <div class="product-thumb">
-                                    <a href="product.html">
-                                        <img src="{{$product->getImage()}}" alt="{{$product->title}}">
+                                    <a href="{{ route('shopProduct', $product->slug) }}">
+                                        <img src="{{ $product->getImage() }}" alt="{{ $product->title }}">
                                     </a>
                                 </div>
                                 <div class="product-details">
                                     <h4>
-                                        <a href="product.html">
-                                           {{$product->title}}
+                                        <a href="{{ route('shopProduct', $product->slug) }}">
+                                            {{ $product->title }}
                                         </a>
                                     </h4>
                                     <p class="product-excerpt">
@@ -35,22 +35,27 @@
 
                                     <div class="product-bottom-details d-flex justify-content-between">
                                         @if ($product->new_price)
-                                        <div class="product-price">
-                                            <small>
-                                                ${{$product->price}}
-                                            </small>
-                                            ${{$product->new_price}}
-                                        </div>
+                                            <div class="product-price">
+                                                <small>
+                                                    ${{ $product->price }}
+                                                </small>
+                                                ${{ $product->new_price }}
+                                            </div>
                                         @else
-                                        <div class="product-price">
+                                            <div class="product-price">
 
-                                            ${{$product->price}}
-                                        </div>
+                                                ${{ $product->price }}
+                                            </div>
                                         @endif
 
                                         <div class="product-links">
-                                            <a href="#" class="btn btn-outline-secondary add-to-cart"><i
-                                                    class="fas fa-shopping-cart"></i></a>
+                                            <form action="{{ route('addBasket', $product->id) }}" method="post"
+                                                enctype="multipart/form-data" id="addCart" >
+                                                @csrf
+                                                <button type="submit" class="btn btn-outline-secondary add-to-cart">
+                                                    <i class="fas fa-shopping-cart"></i>
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

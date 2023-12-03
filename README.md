@@ -13,4 +13,5 @@ consisting of two parts
 
 2. Web, where the E Shop market in bootstrap 5, was implemented, worked with:
     -simple controller, 
+    -ajax jqery filter,
    

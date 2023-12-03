@@ -1,9 +1,9 @@
 <div class="row">
-    @foreach ($products as $element)
+    @foreach ($products as $product)
         <div class="col-lg-4 col-sm-6 mb-3">
             <div class="product-card">
                 <div class="product-card-offer">
-                    @foreach ($element->types as $item)
+                    @foreach ($product->types as $item)
                         @if ($item->slug == 'hit')
                             <div class="offer-hit">Hit</div>
                         @endif
@@ -13,36 +13,46 @@
                     @endforeach
                 </div>
                 <div class="product-thumb">
-                    <a href="#">
-                        <img src="{{ $element->getImage() }}" alt="{{ $element->title }}">
+                    <a href="{{route('shopProduct', $product->slug)}}">
+                        <img src="{{ $product->getImage() }}" alt="{{ $product->title }}">
                     </a>
                 </div>
                 <div class="product-details">
                     <h4>
-                        <a href="#">
-                            {{ $element->title }}
+                        <a href="{{route('shopProduct', $product->slug)}}">
+                            {{ $product->title }}
                         </a>
                     </h4>
                     <p class="product-excerpt">
-                        {{ Illuminate\Support\Str::limit($element->description, 50, '...') }}
+                        {{ Illuminate\Support\Str::limit($product->description, 50, '...') }}
                     </p>
                     <div class="product-bottom-details d-flex justify-content-between">
 
-                        @if ($element->new_price)
+                        @if ($product->new_price)
                             <div class="product-price">
                                 <small>
-                                    ${{ $element->price }}
+                                    ${{ $product->price }}
                                 </small>
-                                ${{ $element->new_price }}
+                                ${{ $product->new_price }}
                             </div>
                         @else
                             <div class="product-price">
-
-                                ${{ $element->price }}
+                                ${{ $product->price }}
                             </div>
                         @endif
+                        <div class="product-links">
+                            <form action="{{ route('addBasket', $product->id) }}" method="post"
+                                enctype="multipart/form-data" id="addCart">
+                                @csrf
+                                <button type="submit" class="btn btn-outline-secondary add-to-cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </button>
+                            </form>
+                        </div>
                     </div>
+
                 </div>
+
             </div>
         </div>
     @endforeach

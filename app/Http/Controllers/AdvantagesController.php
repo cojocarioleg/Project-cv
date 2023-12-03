@@ -31,6 +31,10 @@ class AdvantagesController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'advantage_1' => 'required',
+            'advantage_2' => 'required',
+            'advantage_3' => 'required',
+            'advantage_4' => 'required',
             'icon' => 'required'
         ]);
         Advantage::create($request->all());
@@ -61,6 +65,10 @@ class AdvantagesController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'advantage_1' => 'required',
+            'advantage_2' => 'required',
+            'advantage_3' => 'required',
+            'advantage_4' => 'required',
             'icon' => 'required',
         ]);
         $advantage = Advantage::find($id);

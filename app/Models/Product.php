@@ -51,6 +51,11 @@ class Product extends Model
         return $this->belongsToMany(Offer::class)->withTimestamps();
     }
 
+    public function images()
+    {
+        return $this->hasMany(ImageProduct::class);
+    }
+
     protected $fillable = ['title', 'description', 'image', 'category_id', 'price', 'new_price', 'qty',];
 
     public function getImage()

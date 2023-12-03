@@ -18,6 +18,10 @@ class AdvantageFactory extends Factory
     {
         return [
             'title' => 'Advantage_'.$this->faker->numberBetween(1, 5),
+            'advantage_1' => 'text_'.$this->faker->numberBetween(1, 20),
+            'advantage_2' => 'text_'.$this->faker->numberBetween(1, 20),
+            'advantage_3' => 'text_'.$this->faker->numberBetween(1, 20),
+            'advantage_4' => 'text_'.$this->faker->numberBetween(1, 20),
             'icon' => 'fas fa-cubes',
 
         ];

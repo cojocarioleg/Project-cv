@@ -11,7 +11,7 @@
 
     <main class="main">
 
-        @include('web.layouts.container-fluid', [($page = 'Register')])
+        @include('web.layouts.container-fluid', [($name = 'Register')])
 
         <div class="container-fluid mb-3">
             <div class="row">

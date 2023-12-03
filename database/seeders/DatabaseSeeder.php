@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             OfferSeeder::class,
             ColorSeeder::class,
             ProductSeeder::class,
+            ImageProductSeeder::class,
             NetworkSeeder::class,
             AdvantageSeeder::class,
             AboutSeeder::class,

@@ -38,5 +38,28 @@
     </main>
 @endsection
 @section('js')
-    <script src="{{asset('assets/web/js/sort.js')}}">  </script>
+    <script src="{{ asset('assets/web/js/sort.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+
+            $('input[name="color"]:radio').on("click", function() {
+                let color = $(this).val();
+                let url = $(this).data("url");
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    data: {
+                        color: color,
+                    },
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                    },
+                    success: (data) => {
+                        console.log('ok');
+                    },
+                });
+            });
+
+        });
+    </script>
 @endsection

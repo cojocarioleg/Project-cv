@@ -10,7 +10,7 @@
 @section('content')
 <main class="main">
 
-    @include('web.layouts.container-fluid', [$page='Login'])
+    @include('web.layouts.container-fluid', [$name ='Login'])
 
     <div class="container-fluid mb-3">
         <div class="row">
@@ -47,7 +47,7 @@
                                     <button type="submit" class="btn btn-warning">Login</button>
                                     <a class="btn btn-primary" href="{{route('register.create')}}" role="button">Register</a>
                                 </div>
-                                
+
                             </form>
                         </div>
                     </div>

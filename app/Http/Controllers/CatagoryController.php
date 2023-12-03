@@ -16,13 +16,15 @@ class CatagoryController extends Controller
         $paginate = 1;
         $paginate = isset($request->paginate) ? $request->paginate : 3;
 
-
         $shopCategory = Category::where('slug', $category)->first();
         $products = Product::where('category_id', $shopCategory->id)->paginate($paginate);
         $types = Type::all();
         $colors = Color::all();
         $sizes = Size::all();
 
+        if (isset($request->color)) {
+            $products = $products->colors()->paginate($paginate);
+        }
 
 
         if (isset($request->orderBy)) {
@@ -52,7 +54,5 @@ class CatagoryController extends Controller
         return view('web.categories.index', compact('shopCategory', 'types', 'colors', 'sizes', 'products'));
     }
 
-    public function sort(Request $request, $category)
-    {
-    }
+
 }
