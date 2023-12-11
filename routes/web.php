@@ -49,6 +49,8 @@ Route::middleware('guest')->group(function(){
 });
 
 Route::get('/logout', [UserController::class, 'logout'])->name('logout')->middleware('auth');
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout')->middleware('auth');
+Route::post('/checkout/confirm', [CheckoutController::class, 'confirm'])->name('checkout.confirm')->middleware('auth');
 
 /*
 |--------------------------------------------------------------------------
@@ -65,4 +67,4 @@ Route::post('/cart/addBasket/{id}', [CartController::class, 'addBasket'])->name(
 Route::post('/cart/removeBasket/{id}', [CartController::class, 'removeBasket'])->name('removeBasket');
 
 
-Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+

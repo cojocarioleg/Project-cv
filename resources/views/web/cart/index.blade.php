@@ -2,6 +2,7 @@
 @extends('web.layouts.head')
 @extends('web.layouts.header')
 @extends('web.layouts.nav')
+@extends('web.layouts.flash')
 @extends('web.layouts.cart')
 @extends('web.layouts.footer')
 
@@ -11,19 +12,7 @@
 
 @section('content')
     <main class="main">
-
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="breadcrumbs">
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><span>Cart</span></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
+        @include('web.layouts.container-fluid', ['name' => 'Cart'])
 
         <div class="container-fluid">
             <div class="row">
@@ -76,8 +65,6 @@
                                                         </button>
                                                         @csrf
                                                     </form>
-
-                                                    <form action="{{ route('addBasket', $product->id) }}" method="POST">
                                                     <span class="badge text-success">{{$product->pivot->count}}</span>
                                                     <form action="{{ route('addBasket', $product->id) }}" method="POST">
                                                         @csrf

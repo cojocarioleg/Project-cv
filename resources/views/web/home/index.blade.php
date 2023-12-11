@@ -2,6 +2,7 @@
 @extends('web.layouts.head')
 @extends('web.layouts.header')
 @extends('web.layouts.nav')
+@extends('web.layouts.flash')
 @extends('web.layouts.cart')
 @extends('web.layouts.footer')
 

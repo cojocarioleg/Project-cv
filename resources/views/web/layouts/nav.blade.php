@@ -71,4 +71,5 @@
             </div>
         </nav>
     </div>
+
 @endsection
