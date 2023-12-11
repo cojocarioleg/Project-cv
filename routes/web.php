@@ -60,6 +60,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/shopCategory/{category}', [CatagoryController::class, 'index'])->name('shopCategory');
 Route::get('/shopProduct/{product}', [ProductController::class, 'index'])->name('shopProduct');
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
+Route::get('/cart/updateBasket', [CartController::class, 'updateBasket'])->name('updateBasket');
 Route::post('/cart/addBasket/{id}', [CartController::class, 'addBasket'])->name('addBasket');
 Route::post('/cart/removeBasket/{id}', [CartController::class, 'removeBasket'])->name('removeBasket');
 

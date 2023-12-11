@@ -28,15 +28,6 @@ class AppServiceProvider extends ServiceProvider
         //paginate
         Paginator::useBootstrap();
 
-        $networks = Network::all();
-        $contact = Contact::first();
-
-
-        View::share([
-            'networks' => $networks,
-            'contact' => $contact,
-        ]);
-
         View::composer('web/layouts/nav', function ($view) {
             $order = null;
             $categories = Category::orderBy('id')->get();
@@ -56,5 +47,13 @@ class AppServiceProvider extends ServiceProvider
             }
             $view->with('order', $order);
         });
+
+        $networks = Network::all();
+        $contact = Contact::first();
+        
+        View::share([
+            'networks' => $networks,
+            'contact' => $contact,
+        ]);
     }
 }

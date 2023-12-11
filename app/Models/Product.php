@@ -62,4 +62,14 @@ class Product extends Model
     {
        return ImageHelper::getImageContent($this->image);
     }
+
+    public function getPriceForCount()
+    {
+        $price = $this->new_price ? $this->new_price : $this->price;
+        if(!is_null($this->pivot)){
+            return $this->pivot->count * $price;
+        }
+        return $price;
+    }
+
 }

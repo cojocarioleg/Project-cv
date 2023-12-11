@@ -24,11 +24,13 @@
                                     @else
                                         <td>${{ $product->price }}</td>
                                     @endif
-                                    <td>&times;1</td>
+                                    <td>&times;
+                                        {{$product->pivot->count}}
+                                    </td>
                                     <td>
                                         <form action="{{ route('removeBasket', $product->id) }}" method="post">
                                             @csrf
-                                            <button type="submit" class="btn btn-danger" onclick="return confirm_delete()">
+                                            <button type="submit" class="btn btn-danger" id="btn-danger" onclick="return confirm('are your sure?')">
                                                 <i class="fa-regular fa-circle-xmark"></i>
                                             </button>
                                         </form>
@@ -44,7 +46,14 @@
                     <tfoot>
                         <tr>
                             <td colspan="4" class="text-end">Total:</td>
-                            <td>$325</td>
+                            <td>
+                                @if ($order)
+                                ${{$order->getFullPrice()}}
+                                @else
+                                ${{0}}
+                                @endif
+
+                            </td>
                         </tr>
                     </tfoot>
                 </table>

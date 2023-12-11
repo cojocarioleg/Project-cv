@@ -614,6 +614,11 @@ footer a:hover {
     padding: 1rem;
 }
 
+
+span.badge {
+    display: block;
+}
+
 /* ============================= Cart Page ============================ */
 
 @media only screen and (min-width : 992px) {
@@ -649,3 +654,6 @@ footer a:hover {
         padding-right: 8px;
     }
 }
+
+
+

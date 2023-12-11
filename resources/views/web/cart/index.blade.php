@@ -33,7 +33,9 @@
 
                         <div class="table-responsive">
                             <table class="table align-middle table-hover">
-                                <thead class="table-dark">
+
+                                @csrf
+                                <thead class="table-dark ">
                                     <tr>
                                         <th>Photo</th>
                                         <th>Product</th>
@@ -62,12 +64,38 @@
                                             @endif
 
                                             <td>
-                                                <input type="number" value="1" class="form-control cart-qty">
+                                            <td>
+
+                                                <div class="btn-group form-inline">
+                                                    <form action="{{ route('removeBasket', $product->id) }}" method="POST">
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-danger" href="">
+                                                            <span class="glyphicon glyphicon-minus"
+                                                                aria-hidden="true"> -
+                                                            </span>
+                                                        </button>
+                                                        @csrf
+                                                    </form>
+
+                                                    <form action="{{ route('addBasket', $product->id) }}" method="POST">
+                                                    <span class="badge text-success">{{$product->pivot->count}}</span>
+                                                    <form action="{{ route('addBasket', $product->id) }}" method="POST">
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-success" href="">
+                                                            <span class="glyphicon glyphicon-plus" aria-hidden="true">
+                                                                +
+                                                            </span>
+                                                        </button>
+                                                        @csrf
+                                                    </form>
+                                                </div>
+                                            </td>
                                             </td>
                                             <td>
                                                 <form action="{{ route('removeBasket', $product->id) }}" method="post">
                                                     @csrf
-                                                    <button type="submit" class="btn btn-danger" onclick="return confirm(Swal.fire('SweetAlert2 is working!'))">
+                                                    <button type="submit" class="btn btn-danger"
+                                                        onclick="return confirm('are your sure?')">
                                                         <i class="fa-regular fa-circle-xmark"></i>
                                                     </button>
                                                 </form>
@@ -80,63 +108,58 @@
                                 <tfoot>
                                     <tr>
                                         <td colspan="5" class="text-end">
-                                            <button class="btn btn-outline-warning">Update Cart</button>
+                                            <button id="updateCart" class="btn btn-outline-warning"
+                                                data-url="">
+                                               Add Products
+                                            </button>
                                         </td>
                                     </tr>
                                 </tfoot>
+
+
                             </table>
                         </div>
 
                     </div>
                 </div>
 
-                <div class="col-lg-4 mb-3">
-
-                    <div class="cart-summary p-3 sidebar">
-                        <h5 class="section-title"><span>Cart Summary</span></h5>
-
-                        <div class="d-flex justify-content-between my-3">
-                            <h6>Subtotal</h6>
-                            <h6>$1000</h6>
-                        </div>
-
-                        <div class="d-flex justify-content-between my-3">
-                            <h6>Coupon</h6>
-                            <h6>-$20</h6>
-                        </div>
-
-                        <div class="d-flex justify-content-between my-3 border-bottom">
-                            <h6>Shipping</h6>
-                            <h6>$10</h6>
-                        </div>
-
-                        <button class="btn btn-link px-0 btn-coupon" data-bs-toggle="collapse"
-                            data-bs-target="#collapseCoupon">
-                            Have a Coupon?
-                        </button>
-
-                        <div class="input-group collapse" id="collapseCoupon">
-                            <input type="text" class="form-control" placeholder="Coupon Code">
-                            <button class="btn btn-warning">
-                                <i class="fa-regular fa-circle-check"></i>
-                            </button>
-                        </div>
-
-                        <div class="d-flex justify-content-between my-3">
-                            <h3>Total</h3>
-                            <h3>$990</h3>
-                        </div>
-
-                        <div class="d-grid">
-                            <a href="#" class="btn btn-warning">Checkout</a>
-                        </div>
-
-                    </div>
-
-                </div>
+                @include('web.cart.cart-summary')
 
             </div>
         </div>
 
     </main>
+@endsection
+
+@section('js')
+    <script>
+        $(document).ready(function() {
+            let masiv = [];
+            $("#updateCart").click(function() {
+                $("input[name=count]").each(function(key, val) {
+                    masiv.push([
+                        key = $(this).attr("data-pivotId"),
+                        val = $(this).val(),
+                    ]);
+                });
+
+                url = $(this).data("url");
+
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    data: {
+                        masiv: masiv,
+                    },
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                    },
+                    success: (data) => {
+                        console.log(masiv);
+                    },
+                });
+
+            });
+        });
+    </script>
 @endsection
