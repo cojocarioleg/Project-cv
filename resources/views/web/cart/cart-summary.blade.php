@@ -5,12 +5,14 @@
 
         <div class="d-flex justify-content-between my-3">
             <h6>Subtotal</h6>
-            <h6>${{$order->getFullPrice()}}</h6>
+            <h6>{{ $order->getFullPrice() }}
+                {{ App\Helpers\CurrencyConversionHelper::getCurrencySymbol() }}
+            </h6>
         </div>
 
         <div class="d-flex justify-content-between my-3 border-bottom">
             <h6>Shipping</h6>
-            <h6>$10</h6>
+            <h6>10 {{App\Helpers\CurrencyConversionHelper::getCurrencySymbol()}}</h6>
         </div>
 
         <div class="input-group collapse" id="collapseCoupon">
@@ -22,11 +24,13 @@
 
         <div class="d-flex justify-content-between my-3">
             <h3>Total</h3>
-            <h3>${{$order->getFullPrice() - 10}}</h3>
+            <h3>{{ $order->getFullPrice() - 10 }}
+                {{ App\Helpers\CurrencyConversionHelper::getCurrencySymbol() }}
+            </h3>
         </div>
 
         <div class="d-grid">
-            <a href="{{route('checkout')}}" class="btn btn-warning">Checkout</a>
+            <a href="{{ route('checkout') }}" class="btn btn-warning">Checkout</a>
         </div>
 
     </div>

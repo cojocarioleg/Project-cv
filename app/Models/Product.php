@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\CurrencyConversionHelper;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
@@ -70,6 +71,16 @@ class Product extends Model
             return $this->pivot->count * $price;
         }
         return $price;
+    }
+
+    public function getPriceAttribute($value)
+    {
+        return round(CurrencyConversionHelper::convert($value), 2) ;
+    }
+
+    public function getCurrencyAttribute()
+    {
+
     }
 
 }

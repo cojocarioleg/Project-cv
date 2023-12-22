@@ -25,6 +25,8 @@ use Illuminate\Support\Facades\Route;
 | Web Admin Routes
 |--------------------------------------------------------------------------
 */
+Route::get('currency/{currencyCode}', [HomeController::class, 'changeCurrency'])->name('changeCurrency');
+
 Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/', [MainController::class, 'index'])->name('admin.index');
     Route::resource('/categories', AdminCategoryController::class);

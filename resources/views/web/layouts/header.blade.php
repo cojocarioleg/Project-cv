@@ -24,6 +24,7 @@
 
                     <div class="col-6 col-sm-4">
                         <div class="header-top-account d-flex justify-content-end">
+
                             <div class="btn-group me-2">
                                 <div class="dropdown">
                                     <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
@@ -41,6 +42,26 @@
                                                 <a class="dropdown-item" href="{{ route('login') }}">Sign In</a>
                                             </li>
                                         @endif
+
+
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="btn-group me-2">
+                                <div class="dropdown">
+                                    <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        {{session('currency', 'MDL')}}
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        @foreach (App\Helpers\CurrencyConversionHelper::getCurrency() as $item )
+                                        <li>
+                                            <a class="dropdown-item" href="{{route('changeCurrency', $item->code)}}">
+                                                {{$item->code}}
+                                            </a>
+                                        </li>
+                                        @endforeach
 
 
                                     </ul>

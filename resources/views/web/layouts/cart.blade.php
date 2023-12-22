@@ -20,17 +20,22 @@
                                         <a href="#">{{ $product->title }}</a>
                                     </td>
                                     @if ($product->new_price)
-                                        <td>${{ $product->new_price }}</td>
+                                        <td>{{ $product->new_price }}
+                                            {{ App\Helpers\CurrencyConversionHelper::getCurrencySymbol() }}
+                                        </td>
                                     @else
-                                        <td>${{ $product->price }}</td>
+                                        <td>{{ $product->price }}
+                                            {{ App\Helpers\CurrencyConversionHelper::getCurrencySymbol() }}
+                                        </td>
                                     @endif
                                     <td>&times;
-                                        {{$product->pivot->count}}
+                                        {{ $product->pivot->count }}
                                     </td>
                                     <td>
                                         <form action="{{ route('removeBasket', $product->id) }}" method="post">
                                             @csrf
-                                            <button type="submit" class="btn btn-danger" id="btn-danger" onclick="return confirm('are your sure?')">
+                                            <button type="submit" class="btn btn-danger" id="btn-danger"
+                                                onclick="return confirm('are your sure?')">
                                                 <i class="fa-regular fa-circle-xmark"></i>
                                             </button>
                                         </form>
@@ -48,9 +53,11 @@
                             <td colspan="4" class="text-end">Total:</td>
                             <td>
                                 @if ($order)
-                                ${{$order->getFullPrice()}}
+                                    {{ $order->getFullPrice() }}
+                                    {{ App\Helpers\CurrencyConversionHelper::getCurrencySymbol() }}
                                 @else
-                                ${{0}}
+                                    {{ 0 }}
+                                    {{ App\Helpers\CurrencyConversionHelper::getCurrencySymbol() }}
                                 @endif
 
                             </td>

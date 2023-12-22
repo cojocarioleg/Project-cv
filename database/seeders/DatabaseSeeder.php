@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             AdvantageSeeder::class,
             AboutSeeder::class,
             ContactSeeder::class,
+            CurrencySeeder::class,
         ]);
     }
 }

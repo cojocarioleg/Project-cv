@@ -1,20 +1,16 @@
 <?php
 
 namespace App\Helpers;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class ImageHelper
 {
-
-
-    public static function uploadImage($file, $nameFolder = null, $image = null, )
+    public static function uploadImage($file, $nameFolder = null, $image = null,)
     {
-        if($file->hasFile('image')){
-            if($image){
+        if ($file->hasFile('image')) {
+            if ($image) {
                 Storage::delete($image);
             }
-
             return $file->file('image')->store("images/{$nameFolder}");
         }
         return $image;
@@ -24,8 +20,8 @@ class ImageHelper
     {
         if (!$image) {
             return asset('assets/images/no_img.png');
-        } elseif(substr($image, 0, 5) == 'https')
-        return($image);
+        } elseif (substr($image, 0, 5) == 'https')
+            return ($image);
         return asset("uploads/{$image}");
     }
 }

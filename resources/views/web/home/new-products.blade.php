@@ -33,14 +33,17 @@
                         @if ($product->new_price)
                         <div class="product-price">
                             <small>
-                                ${{$product->price}}
+                                {{$product->price}}
+                                {{App\Helpers\CurrencyConversionHelper::getCurrencySymbol()}}
                             </small>
-                            ${{$product->new_price}}
+                            {{$product->new_price}}
+                            {{App\Helpers\CurrencyConversionHelper::getCurrencySymbol()}}
                         </div>
                         @else
                         <div class="product-price">
 
-                            ${{$product->price}}
+                            {{$product->price}}
+                            {{App\Helpers\CurrencyConversionHelper::getCurrencySymbol()}}
                         </div>
                         @endif
 
